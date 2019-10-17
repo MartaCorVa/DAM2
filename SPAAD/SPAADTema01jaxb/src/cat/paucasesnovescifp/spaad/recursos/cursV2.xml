@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><curs codi="S2P">
+    <nom>DAM</nom>
+    <moduls>
+        <modul codi="sppsp">
+            <nom>Processos</nom>
+            <hores>8</hores>
+        </modul>
+        <modul codi="eie">
+            <nom>Empreses</nom>
+            <hores>3</hores>
+        </modul>
+    </moduls>
+</curs>
