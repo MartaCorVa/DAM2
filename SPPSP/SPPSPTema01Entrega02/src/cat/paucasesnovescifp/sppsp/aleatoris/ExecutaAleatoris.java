@@ -48,6 +48,6 @@ public class ExecutaAleatoris {
         } while (contador != 10 && tanca != true);
         if (contador == 10) {
             System.out.println("FINALITZAT: no hi ha més nombres aleatoris");
-        }        
+        }
     }
 }
