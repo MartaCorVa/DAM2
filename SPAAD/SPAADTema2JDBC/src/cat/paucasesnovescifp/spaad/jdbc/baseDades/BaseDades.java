@@ -44,7 +44,7 @@ public class BaseDades {
         this.propietats = propietats;
     }
 
-    public ArrayList<String> tornaLlengues() {
+    public ArrayList<String> tornaLlengues() throws SQLException {
         ArrayList<String> llengues = new ArrayList<String>();
         try (Connection con = DriverManager.getConnection(url, propietats);
                 Statement st = con.createStatement();
@@ -52,8 +52,6 @@ public class BaseDades {
             while (rs.next()) {
                 llengues.add(rs.getString("llengua"));
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
         return llengues;
     }

@@ -30,6 +30,8 @@ public class ProvesJDBC {
             }
         } catch (JDBCException ex) {
             Logger.getLogger(ProvesJDBC.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProvesJDBC.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
