@@ -32,10 +32,11 @@ namespace UsuarisWinFormUI
                     newID = con.Query<int>(sql).FirstOrDefault();
                 }catch (Exception ex)
                 {
+
                     Console.WriteLine(ex.Message);
                 }
 
-            string insert = $"insert into USUARIS (ID_USR, DNI_USR, NOM_USR, LLINATGE1, POB_USR, EMAIL_USR, PASSWORD)" +
+            string insert = $"insert into USUARIS (ID_USR, DNI_USR, NOM_USR, LLINATGE1, POB_USR, EMAIL_USR, PASSWD)" +
                 $" VALUES ({ newID + 1}, '{textBoxNIF.Text}','{textBoxName.Text}','{textBoxSurname.Text}'," +
                 $"'{textBoxCity.Text}','{textBoxEmail.Text}','{textBoxPasswd.Text}')";
 
@@ -57,7 +58,7 @@ namespace UsuarisWinFormUI
                 {
                     Console.WriteLine(ex.Message);
                 }
-
+            
             
             con.Close();
             }            
@@ -65,13 +66,20 @@ namespace UsuarisWinFormUI
 
         private void bFindUser_Click(object sender, EventArgs e)
         {
+            listBoxAutor.Items.Clear();
             List<User> users = new List<User>();
             MySqlConnection con = new MySqlConnection(connectionString);
-            string sql = $"SELECT DNI_USR, NOM_USR FROM USUARIS" +
+            if(textBoxFindUser.Text == "")
+            {
+                MessageBox.Show("The User can't be null or empty.", "User Manager", MessageBoxButtons.OK);
+            } else
+            {
+                string sql = $"SELECT DNI_USR, NOM_USR FROM USUARIS" +
                 $" WHERE NOM_USR LIKE '%{textBoxFindUser.Text}%'" +
                 $" OR LLINATGE1 LIKE '%{textBoxFindUser.Text}%'" + 
-                $" OR POB_USR LIKE '%{textBoxFindUser.Text}%'";
-            users = con.Query<User>(sql).ToList();
+                $" OR POB_USR LIKE '%{textBoxFindUser.Text}%'"; 
+                users = con.Query<User>(sql).ToList();
+            }
 
             foreach (var user in users)
             {
