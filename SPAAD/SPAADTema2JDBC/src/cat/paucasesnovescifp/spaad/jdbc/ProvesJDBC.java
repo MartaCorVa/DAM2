@@ -28,6 +28,16 @@ public class ProvesJDBC {
             for (String llengua : llengues) {
                 System.out.println(llengua);
             }
+            // Explosión
+            // ArrayList<String> titols = bbdd.tornaTitolsSegonsLlengua("Anglesa' or 1=1; -- ");
+            ArrayList<String> titols = bbdd.tornaTitolsSegonsLlengua("Anglesa");
+            for (String titol : titols) {
+                System.out.println(titol);
+            }
+            ArrayList<String> titolsPS = bbdd.tornaTitolsSegonsLlenguaPS("Anglesa");
+            for (String titol : titolsPS) {
+                System.out.println(titol);
+            }
         } catch (JDBCException ex) {
             Logger.getLogger(ProvesJDBC.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

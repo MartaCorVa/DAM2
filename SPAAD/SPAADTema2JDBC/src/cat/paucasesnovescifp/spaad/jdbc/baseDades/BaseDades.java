@@ -55,5 +55,32 @@ public class BaseDades {
         }
         return llengues;
     }
+    
+    public ArrayList<String> tornaTitolsSegonsLlengua(String llengua) throws SQLException {
+        ArrayList<String> titols = new ArrayList<String>();
+        try (Connection con = DriverManager.getConnection(url, propietats);
+                Statement st = con.createStatement();
+                ResultSet rs = st.executeQuery("select TITOL from LLIBRES where" + 
+                        " fk_llengua ='" + llengua + "'");) {
+            while (rs.next()) {
+                titols.add(rs.getString("titol"));
+            }
+        }
+        return titols;
+    }
 
+    public ArrayList<String> tornaTitolsSegonsLlenguaPS(String llengua) throws SQLException {
+        ArrayList<String> titols = new ArrayList<String>();
+        try (Connection con = DriverManager.getConnection(url, propietats);
+                PreparedStatement ps = con.prepareStatement("select TITOL from LLIBRES where" + 
+                        " fk_llengua =?");) {
+            ps.setString(1, llengua);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                titols.add(rs.getString("titol"));
+            }
+        }
+        return titols;
+    }
+    
 }
