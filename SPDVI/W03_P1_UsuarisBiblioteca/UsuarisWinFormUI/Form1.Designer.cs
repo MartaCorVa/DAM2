@@ -46,18 +46,10 @@
             this.textBoxNIF = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.listBoxAutor = new System.Windows.Forms.ListBox();
+            this.bFindUser = new System.Windows.Forms.Button();
+            this.textBoxFindUser = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -224,18 +216,10 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.textBox5);
+            this.tabPage2.Controls.Add(this.textBoxFindUser);
             this.tabPage2.Controls.Add(this.label6);
-            this.tabPage2.Controls.Add(this.textBox4);
-            this.tabPage2.Controls.Add(this.label5);
-            this.tabPage2.Controls.Add(this.textBox3);
-            this.tabPage2.Controls.Add(this.label4);
-            this.tabPage2.Controls.Add(this.textBox2);
-            this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Controls.Add(this.textBox1);
-            this.tabPage2.Controls.Add(this.label2);
-            this.tabPage2.Controls.Add(this.textBox);
-            this.tabPage2.Controls.Add(this.label1);
+            this.tabPage2.Controls.Add(this.listBoxAutor);
+            this.tabPage2.Controls.Add(this.bFindUser);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -244,101 +228,40 @@
             this.tabPage2.Text = "Find User";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(134, 219);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(105, 22);
-            this.textBox5.TabIndex = 11;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 219);
+            this.label6.Location = new System.Drawing.Point(35, 74);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(121, 17);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Confirm Password";
+            this.label6.Size = new System.Drawing.Size(150, 17);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Information of the user";
             // 
-            // textBox4
+            // listBoxAutor
             // 
-            this.textBox4.Location = new System.Drawing.Point(82, 176);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(105, 22);
-            this.textBox4.TabIndex = 9;
+            this.listBoxAutor.FormattingEnabled = true;
+            this.listBoxAutor.ItemHeight = 16;
+            this.listBoxAutor.Location = new System.Drawing.Point(38, 94);
+            this.listBoxAutor.Name = "listBoxAutor";
+            this.listBoxAutor.Size = new System.Drawing.Size(675, 292);
+            this.listBoxAutor.TabIndex = 11;
             // 
-            // label5
+            // bFindUser
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 176);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(69, 17);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Password";
+            this.bFindUser.Location = new System.Drawing.Point(420, 26);
+            this.bFindUser.Name = "bFindUser";
+            this.bFindUser.Size = new System.Drawing.Size(81, 38);
+            this.bFindUser.TabIndex = 10;
+            this.bFindUser.Text = "Search";
+            this.bFindUser.UseVisualStyleBackColor = true;
+            this.bFindUser.Click += new System.EventHandler(this.bFindUser_Click);
             // 
-            // textBox3
+            // textBoxFindUser
             // 
-            this.textBox3.Location = new System.Drawing.Point(58, 134);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(105, 22);
-            this.textBox3.TabIndex = 7;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 134);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 17);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Email";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(71, 91);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(105, 22);
-            this.textBox2.TabIndex = 5;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 91);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 17);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Surname";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(58, 46);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(105, 22);
-            this.textBox1.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 46);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 17);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Name";
-            // 
-            // textBox
-            // 
-            this.textBox.Location = new System.Drawing.Point(43, 7);
-            this.textBox.Name = "textBox";
-            this.textBox.Size = new System.Drawing.Size(105, 22);
-            this.textBox.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "NIF";
+            this.textBoxFindUser.Location = new System.Drawing.Point(38, 34);
+            this.textBoxFindUser.Name = "textBoxFindUser";
+            this.textBoxFindUser.Size = new System.Drawing.Size(376, 22);
+            this.textBoxFindUser.TabIndex = 13;
             // 
             // Form1
             // 
@@ -362,14 +285,6 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button bRegister;
         private System.Windows.Forms.TextBox textBoxCity;
         private System.Windows.Forms.Label label13;
@@ -385,10 +300,10 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBoxNIF;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ListBox listBoxAutor;
+        private System.Windows.Forms.Button bFindUser;
+        private System.Windows.Forms.TextBox textBoxFindUser;
     }
 }
 

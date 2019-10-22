@@ -30,14 +30,13 @@ namespace UsuarisWinFormUI
                 try
                 {
                     newID = con.Query<int>(sql).FirstOrDefault();
-                }
-                catch (Exception ex)
+                }catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                 }
 
-            string insert = $"insert into USUARIS ID_USR, DNI_USR, NOM_USR, LLINATGE1, POB_USR, EMAIL_USR, PASSWORD " +
-                $"VALUES ({ newID + 1}, '{textBoxNIF.Text}','{textBoxName.Text}','{textBoxSurname.Text}'," +
+            string insert = $"insert into USUARIS (ID_USR, DNI_USR, NOM_USR, LLINATGE1, POB_USR, EMAIL_USR, PASSWORD)" +
+                $" VALUES ({ newID + 1}, '{textBoxNIF.Text}','{textBoxName.Text}','{textBoxSurname.Text}'," +
                 $"'{textBoxCity.Text}','{textBoxEmail.Text}','{textBoxPasswd.Text}')";
 
                 try
@@ -62,6 +61,23 @@ namespace UsuarisWinFormUI
             
             con.Close();
             }            
+        }
+
+        private void bFindUser_Click(object sender, EventArgs e)
+        {
+            List<User> users = new List<User>();
+            MySqlConnection con = new MySqlConnection(connectionString);
+            string sql = $"SELECT DNI_USR, NOM_USR FROM USUARIS" +
+                $" WHERE NOM_USR LIKE '%{textBoxFindUser.Text}%'" +
+                $" OR LLINATGE1 LIKE '%{textBoxFindUser.Text}%'" + 
+                $" OR POB_USR LIKE '%{textBoxFindUser.Text}%'";
+            users = con.Query<User>(sql).ToList();
+
+            foreach (var user in users)
+            {
+                listBoxAutor.Items.Add(user.DNI_USR + " " + user.NOM_USR);
+            }
+            con.Close();
         }
     }
 }
