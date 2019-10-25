@@ -46,10 +46,10 @@
             this.textBoxNIF = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.textBoxFindUser = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.listBoxAutor = new System.Windows.Forms.ListBox();
             this.bFindUser = new System.Windows.Forms.Button();
-            this.textBoxFindUser = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -228,6 +228,13 @@
             this.tabPage2.Text = "Find User";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // textBoxFindUser
+            // 
+            this.textBoxFindUser.Location = new System.Drawing.Point(38, 34);
+            this.textBoxFindUser.Name = "textBoxFindUser";
+            this.textBoxFindUser.Size = new System.Drawing.Size(376, 22);
+            this.textBoxFindUser.TabIndex = 13;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -255,13 +262,6 @@
             this.bFindUser.Text = "Search";
             this.bFindUser.UseVisualStyleBackColor = true;
             this.bFindUser.Click += new System.EventHandler(this.bFindUser_Click);
-            // 
-            // textBoxFindUser
-            // 
-            this.textBoxFindUser.Location = new System.Drawing.Point(38, 34);
-            this.textBoxFindUser.Name = "textBoxFindUser";
-            this.textBoxFindUser.Size = new System.Drawing.Size(376, 22);
-            this.textBoxFindUser.TabIndex = 13;
             // 
             // Form1
             // 

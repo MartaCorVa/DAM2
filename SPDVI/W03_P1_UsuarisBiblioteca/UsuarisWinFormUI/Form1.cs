@@ -71,7 +71,7 @@ namespace UsuarisWinFormUI
             MySqlConnection con = new MySqlConnection(connectionString);
             if(textBoxFindUser.Text == "")
             {
-                MessageBox.Show("The User can't be null or empty.", "User Manager", MessageBoxButtons.OK);
+                MessageBox.Show("The User can't be empty.", "User Manager", MessageBoxButtons.OK);
             } else
             {
                 string sql = $"SELECT DNI_USR, NOM_USR FROM USUARIS" +
