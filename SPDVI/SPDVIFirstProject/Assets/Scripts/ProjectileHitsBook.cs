@@ -10,7 +10,7 @@ public class ProjectileHitsBook : MonoBehaviour
         Debug.Log(collision.gameObject.name);
         if (collision.gameObject.name == "Book(Clone)" || collision.gameObject.name == "book_0001a")
         {
-            Destroy(collision.gameObject, 1.0f);
+            Destroy(collision.gameObject, 3.0f);
         }
         
     }

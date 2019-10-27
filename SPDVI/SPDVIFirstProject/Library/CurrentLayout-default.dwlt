@@ -44,10 +44,10 @@ MonoBehaviour:
     y: 30
     width: 1536
     height: 771
-  m_MinSize: {x: 683, y: 494}
-  m_MaxSize: {x: 14004, y: 14044}
+  m_MinSize: {x: 681, y: 494}
+  m_MaxSize: {x: 14002, y: 14044}
   vertical: 0
-  controlID: 134
+  controlID: 53
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -337,20 +337,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Standard Assets/Characters/FirstPersonCharacter/Prefabs
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Standard Assets/Characters/FirstPersonCharacter/Prefabs
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\marta\source\repos\SPDVIFirstProject
+  m_LastProjectPath: C:\Users\marta\OneDrive\Documentos\Proyectos\SPDVI\SPDVIFirstProject
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 47}
-    m_SelectedIDs: 68360000
-    m_LastClickedID: 13928
-    m_ExpandedIDs: 00000000962e0000883100002c330000803300004e3900004c3a00004e3a0000be3a000000ca9a3b
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: a6330000
+    m_LastClickedID: 13222
+    m_ExpandedIDs: 00000000962e00002c330000803300004e3900004c3a00004e3a0000be3a000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -471,7 +471,7 @@ MonoBehaviour:
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 100
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -503,7 +503,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 30fbffff3cfbffff6efbffff
+      m_ExpandedIDs: 38fbffff6efbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -563,9 +563,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -13.448609, y: -4.458221, z: -12.11358}
+    m_Target: {x: -19.199932, y: 0.41006148, z: 3.136964}
     speed: 2
-    m_Value: {x: -13.448609, y: -4.458221, z: -12.11358}
+    m_Value: {x: -19.199932, y: 0.41006148, z: 3.136964}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -594,9 +594,9 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.05522796, y: -0.88959736, z: 0.11157364, w: 0.43961307}
+    m_Target: {x: 0.008110491, y: -0.66750115, z: 0.0071467976, w: 0.74462634}
     speed: 2
-    m_Value: {x: 0.057055715, y: -0.8872091, z: 0.11397837, w: 0.4434112}
+    m_Value: {x: 0.00810991, y: -0.6674534, z: 0.0071462863, w: 0.7445731}
   m_Size:
     m_Target: 21.77109
     speed: 2

@@ -6,7 +6,7 @@ public class BulletCreator : MonoBehaviour
 {
 
     public GameObject projectilePrefabRef;
-    public float thrust = 1.0f;
+    public float thrust = 300.0f;
     public float moveSpeed = 2.0f;
 
     // Start is called before the first frame update
@@ -22,7 +22,7 @@ public class BulletCreator : MonoBehaviour
         {
             GameObject projectile = Instantiate(projectilePrefabRef, transform.position, Quaternion.identity);
             projectile.GetComponent<Rigidbody>().AddForce(transform.forward * thrust, ForceMode.Impulse);
-            Destroy(projectile, 5.0f);
+            Destroy(projectile, 2.0f);
 
         }
         float sides = Input.GetAxis("Horizontal");

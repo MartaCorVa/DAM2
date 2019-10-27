@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7100170658820199540}
   - component: {fileID: 7100170658820199547}
   m_Layer: 0
-  m_Name: book_0001a
+  m_Name: Book
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7100170659806245635}
   m_LocalRotation: {x: -0, y: 0.6888803, z: -0, w: 0.72487515}
-  m_LocalPosition: {x: 0, y: 0.263, z: 1.29}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: 0, y: 0.812, z: 1.29}
+  m_LocalScale: {x: 4.036433, y: 5.144853, z: 5.731499}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
