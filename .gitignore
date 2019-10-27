@@ -695,3 +695,5 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+/SPPSP/SPPSP/nbproject/private/
+/SPPSP/SPPSPOpcional/nbproject/private/
