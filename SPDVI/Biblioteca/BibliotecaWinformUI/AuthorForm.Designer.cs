@@ -45,7 +45,6 @@
             this.titleForm.Size = new System.Drawing.Size(363, 39);
             this.titleForm.TabIndex = 0;
             this.titleForm.Text = "CIFP Pau Casesnoves";
-            this.titleForm.Click += new System.EventHandler(this.label1_Click);
             // 
             // label1
             // 
@@ -80,6 +79,7 @@
             this.listBoxAuthor.Name = "listBoxAuthor";
             this.listBoxAuthor.Size = new System.Drawing.Size(509, 260);
             this.listBoxAuthor.TabIndex = 4;
+            this.listBoxAuthor.DoubleClick += new System.EventHandler(this.listBoxAuthor_DoubleClick);
             // 
             // bGoBooks
             // 
@@ -104,7 +104,6 @@
             this.Controls.Add(this.titleForm);
             this.Name = "AuthorForm";
             this.Text = "AuthorForm";
-            this.Load += new System.EventHandler(this.AuthorForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

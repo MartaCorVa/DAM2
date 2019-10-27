@@ -23,21 +23,13 @@ namespace BibliotecaWinformUI
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void FindButton_Click(object sender, EventArgs e)
         {
             List<Book> books = new List<Book>();
             MySqlConnection connection = new MySqlConnection(connectionString);
-            string sql = $"select titol, id_llib from llibres where titol <> \"\" and titol like '%{SearchTextBox.Text}%'";
+            string sql = $"select l.titol, l.id_llib, l.descrip_llib, a.id_aut, a.nom_aut from " + 
+                $"llibres l, autors a, lli_aut la where titol <> \"\" and titol like '%{SearchTextBox.Text}%' " +
+            $"and l.id_llib = la.fk_idllib and a.id_aut = la.fk_idaut";
             books = connection.Query<Book>(sql).ToList();
 
             booksListBox.DataSource = books;
@@ -65,19 +57,8 @@ namespace BibliotecaWinformUI
         {
             // selected book
             Book selectedInfo = booksListBox.SelectedItem as Book;
-            // take info
-            List<Book> booksInfo = new List<Book>();
-            MySqlConnection connection = new MySqlConnection(connectionString);
-            string sql = $"select * from llibres where titol <> \"\" and titol like '%{selectedInfo.ID_LLIB}%'";
-            booksInfo = connection.Query<Book>(sql).ToList();
-            Book bookInfo = new Book();
-            //titol, id_llib, numedicio, llocedicio, anyedicio, descrip_llib, isbn, signtop,deplegal
-
-
-            connection.Close();
-
             // create DetailsForm
-            DetailsForm detailsForm = new DetailsForm(bookInfo);
+            DetailsForm detailsForm = new DetailsForm(selectedInfo);
             DialogResult result = detailsForm.ShowDialog(this);
 
             if (result == DialogResult.OK)

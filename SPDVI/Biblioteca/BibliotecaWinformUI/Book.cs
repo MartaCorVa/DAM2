@@ -17,5 +17,7 @@ namespace BibliotecaWinformUI
                 return ID_LLIB + ". " + TITOL;
             }
         }
-            }
+        public string Descrip_Llib { get; set; }
+        public string NOM_AUT { get; set; }
+    }
 }

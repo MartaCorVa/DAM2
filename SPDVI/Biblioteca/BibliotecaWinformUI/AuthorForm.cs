@@ -20,21 +20,11 @@ namespace BibliotecaWinformUI
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void AuthorForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void bSearch_Click(object sender, EventArgs e)
         {
             List<Author> authors = new List<Author>();
             MySqlConnection connection = new MySqlConnection(connectionString);
-            string sql = $"select nom_aut from autors where nom_aut <> \"\" and nom_aut like '%{infoAuthor.Text}%'";
+            string sql = $"select * from autors where nom_aut <> \"\" and nom_aut like '%{infoAuthor.Text}%'";
             authors = connection.Query<Author>(sql).ToList();
 
             listBoxAuthor.DataSource = authors;
@@ -49,7 +39,7 @@ namespace BibliotecaWinformUI
             var forms = Application.OpenForms;
             foreach (Form form in forms)
             {
-                if (form.Name == "BibliotecaMainForm")
+                if (form.Name == "BookForm")
                 {
                     form.Show();
                 }
@@ -60,6 +50,24 @@ namespace BibliotecaWinformUI
         {
             Application.Exit();
         }
-               
+
+        private void listBoxAuthor_DoubleClick(object sender, EventArgs e)
+        {
+            // selected author
+            Author selectedInfo = listBoxAuthor.SelectedItem as Author;
+            // create DetailsAuthorForm
+            DetailsAuthorForm detailsAuthorForm = new DetailsAuthorForm(selectedInfo);
+            DialogResult result = detailsAuthorForm.ShowDialog(this);
+
+            if (result == DialogResult.OK)
+            {
+                //this.txtResult.Text = testDialog.TextBox1.Text;
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                //this.txtResult.Text = testDialog.Text
+            }
+            detailsAuthorForm.Dispose();
+        }
     }
 }

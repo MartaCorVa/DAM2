@@ -45,18 +45,17 @@
             this.label1.Size = new System.Drawing.Size(369, 39);
             this.label1.TabIndex = 0;
             this.label1.Text = "Pau casesnoves library";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // SearchTextBox
             // 
-            this.SearchTextBox.Location = new System.Drawing.Point(41, 107);
+            this.SearchTextBox.Location = new System.Drawing.Point(49, 107);
             this.SearchTextBox.Name = "SearchTextBox";
             this.SearchTextBox.Size = new System.Drawing.Size(254, 22);
             this.SearchTextBox.TabIndex = 6;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(301, 106);
+            this.button1.Location = new System.Drawing.Point(318, 106);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 3;
@@ -67,7 +66,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(38, 83);
+            this.label2.Location = new System.Drawing.Point(46, 87);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 17);
             this.label2.TabIndex = 4;
@@ -106,7 +105,6 @@
             this.Controls.Add(this.label1);
             this.Name = "BookForm";
             this.Text = "Biblioteca";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

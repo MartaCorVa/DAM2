@@ -12,31 +12,25 @@ namespace BibliotecaWinformUI
 {
     public partial class DetailsForm : Form
     {
-        public DetailsForm(Object info)
+        Book _selectedBook;
+        public DetailsForm(Book selected)
         {
             InitializeComponent();
-
-            if (info.GetType() == typeof(Book))
-            {
-                listBoxInfo.DataSource = info;
-                listBoxInfo.DisplayMember = "ID_LLIB";
-            }
+            _selectedBook = selected;
         }
 
         private void DetailsForm_Load(object sender, EventArgs e)
         {
-
+            Book b = _selectedBook;
+            labelTitol.Text = b.TITOL;
+            labelID.Text = "ID " + b.ID_LLIB;
+            labelDescrip.Text = "Description " + b.Descrip_Llib;
+            labelAutor.Text = "Author " + b.NOM_AUT;
         }
                 
         private void bOk_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void bCancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-               
+        }               
     }
 }
