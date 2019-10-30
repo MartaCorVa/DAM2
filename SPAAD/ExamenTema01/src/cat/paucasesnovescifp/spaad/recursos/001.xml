@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<film filmId="1">
+    <titol>ACADEMY DINOSAUR</titol>
+    <descripcio>A Epic Drama of a Feminist And a Mad Scientist who must Battle a Teacher in The Canadian Rockies</descripcio>
+    <idioma idiomaId="1">English</idioma>
+    <durada>86</durada>
+    <actors>
+        <actor actorId="1">
+            <nom>PENELOPE</nom>
+            <llinatges>GUINESS</llinatges>
+        </actor>
+        <actor actorId="10">
+            <nom>CHRISTIAN</nom>
+            <llinatges>GABLE</llinatges>
+        </actor>
+        <actor actorId="20">
+            <nom>LUCILLE</nom>
+            <llinatges>TRACY</llinatges>
+        </actor>
+        <actor actorId="30">
+            <nom>SANDRA</nom>
+            <llinatges>PECK</llinatges>
+        </actor>
+        <actor actorId="40">
+            <nom>JOHNNY</nom>
+            <llinatges>CAGE</llinatges>
+        </actor>
+        <actor actorId="53">
+            <nom>MENA</nom>
+            <llinatges>TEMPLE</llinatges>
+        </actor>
+    </actors>
+</film>
