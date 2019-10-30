@@ -87,10 +87,10 @@ public abstract class Controller {
         }
     }
      
-     public static Object llegir(String ruta){
+     public static Object llegir(String ruta, Class classe){
          Object result = null;
          try {           
-            JAXBContext context = JAXBContext.newInstance(Curs.class);
+            JAXBContext context = JAXBContext.newInstance(classe);
             Unmarshaller unmarshaller = context.createUnmarshaller();
             result = (Object) unmarshaller.unmarshal(new File(ruta));
         } catch (JAXBException ex) {
@@ -99,4 +99,13 @@ public abstract class Controller {
          return result;
      }
      
+     public static void escriure(String ruta, Object dades) {
+           try {
+            JAXBContext context = JAXBContext.newInstance(dades.getClass());
+            Marshaller marshaller = context.createMarshaller();            
+            marshaller.marshal(dades, new File(ruta));
+        }catch (JAXBException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+     }
 }

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        String ruta = "C:\\Users\\marta\\OneDrive\\Documentos\\NetBeansProjects\\SPAADTema01jaxb\\src\\cat\\paucasesnovescifp\\spaad\\recursos";
+        String ruta = "C:\\Users\\marta\\OneDrive\\Documentos\\Proyectos\\SPAAD\\SPAADTema01jaxb\\src\\cat\\paucasesnovescifp\\spaad\\recursos";
         //System.out.println(Controller.llegeixModul(ruta + "\\modul.xml"));
         //Controller.escriuModul(ruta + "\\modul.xml", new Modul("sppsp", "Processos", 8));
         //System.out.println(Controller.llegeixCurs(ruta + "\\curs.xml"));
@@ -27,7 +27,9 @@ public class Main {
        //System.out.println(Controller.llegeixCursV2(ruta + "\\cursV2.xml"));
        //Controller.escriuCursV2(ruta + "\\cursV2.xml", cursv2);
        
-        System.out.println(Controller.llegir(ruta + "\\modul.xml"));
+        Modul modul = (Modul) Controller.llegir(ruta + "\\modul.xml", Modul.class);
+        System.out.println("modul = " + modul);
+        Controller.escriure(ruta + "\\modul.xml", modul);
     }
 
 }
