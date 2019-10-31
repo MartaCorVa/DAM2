@@ -1,21 +1,26 @@
 package cat.paucasesnovescifp.sppsp.opcional;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
  *
  * @author marta
  */
 public class Hijo1 {
-    
+
     public static void main(String[] args) {
-        // Suma 2 valores que te den por pantalla.
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Introduce el primer número: ");
-        int a = sc.nextInt();
-        System.out.println("Introduce el segundo número: ");
-        int b = sc.nextInt();
-        System.out.println(a+b);
+        InputStreamReader isr = new InputStreamReader(System.in);
+        BufferedReader sc = new BufferedReader(isr);
+        String cadena = "";
+        try {
+            // Guardar el valor del buffered reader
+            cadena = sc.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // Imprimir el valor 
+        System.out.println("El hijo 1 dice: " + cadena);
     }
-    
 }
