@@ -55,9 +55,9 @@ public abstract class Controller {
         return curs;
     }
     
-     public static void escriuCurs(String ruta, CursV2 curs) {
+     public static void escriuCurs(String ruta, Curs curs) {
         try {
-            JAXBContext context = JAXBContext.newInstance(CursV2.class);
+            JAXBContext context = JAXBContext.newInstance(Curs.class);
             Marshaller marshaller = context.createMarshaller();            
             marshaller.marshal((curs), new File(ruta));
         }catch (JAXBException ex) {

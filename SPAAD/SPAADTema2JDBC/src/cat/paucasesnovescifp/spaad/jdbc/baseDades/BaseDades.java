@@ -1,6 +1,8 @@
 package cat.paucasesnovescifp.spaad.jdbc.baseDades;
 
 import cat.paucasesnovescifp.spaad.jdbc.auxiliars.JDBCException;
+import cat.paucasesnovescifp.spaad.jdbc.dades.Autor;
+import cat.paucasesnovescifp.spaad.jdbc.dades.Nacionalitat;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -81,6 +83,34 @@ public class BaseDades {
             }
         }
         return titols;
+    }
+    
+    // Exercici 9.1
+    public ArrayList<Nacionalitat> getNacionalitats() throws SQLException, JDBCException {
+        ArrayList<Nacionalitat> nacionalitats = new ArrayList<Nacionalitat>();
+        try (Connection con = DriverManager.getConnection(url, propietats);
+                PreparedStatement ps = con.prepareStatement("select * form nacionalitat");) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                nacionalitats.add(new Nacionalitat(rs.getString("nacionalitat")));
+            }
+        }
+        return nacionalitats;
+    }
+    
+    // Exercici 9.2
+    public Autor getAutor(int id) throws SQLException {
+        Autor autor = null;
+        try (Connection con = DriverManager.getConnection(url, propietats);
+                PreparedStatement ps = con.prepareStatement("select * form autor where " +
+                        "id_aut = ?");) {
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                autor = new Autor()
+            }
+        }
+        return autor;
     }
     
 }
