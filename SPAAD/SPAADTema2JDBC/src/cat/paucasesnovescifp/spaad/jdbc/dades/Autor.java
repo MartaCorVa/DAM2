@@ -19,9 +19,9 @@ public class Autor {
         if(id_aut == null && ("").equals(id_aut)) {
             throw new JDBCException("Error: id null o buit.");
         }
-        if(("").equals(fk_nacionalitat.trim())) {
+        if(("").equals(fk_nacionalitat)) {
             throw new JDBCException("Error: nacionalitat buida.");
-        }
+        }      
         this.nom_aut = nom_aut;
         this.id_aut = id_aut;
         this.fk_nacionalitat = fk_nacionalitat;
