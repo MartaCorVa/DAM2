@@ -19,12 +19,12 @@ public class ProvesJDBC {
     public static void main(String[] args) {
         String url = "jdbc:mysql://192.168.1.134:3306/biblioteca";
         Properties propietats = new Properties();
-        propietats.put("user", "lector");
-        propietats.put("password", "seCret_19");     
-        
+        propietats.put("user", "usuari");
+        propietats.put("password", "seCret_19");
+
         try {
             BaseDades bbdd = new BaseDades(url, propietats);
-            
+
             // Exercici 4
             System.out.println("Llengües: ");
             ArrayList<String> llengues = bbdd.tornaLlengues();
@@ -34,7 +34,7 @@ public class ProvesJDBC {
             System.out.println();
             // Explosión
             // ArrayList<String> titols = bbdd.tornaTitolsSegonsLlengua("Anglesa' or 1=1; -- ");
-            
+
             // Exercici 6
             System.out.println("Títol segons llengua: ");
             ArrayList<String> titols = bbdd.tornaTitolsSegonsLlengua("Anglesa");
@@ -42,7 +42,7 @@ public class ProvesJDBC {
                 System.out.println(titol);
             }
             System.out.println();
-            
+
             // Exercici 7
             System.out.println("Títol segons llengua PS: ");
             ArrayList<String> titolsPS = bbdd.tornaTitolsSegonsLlenguaPS("Anglesa");
@@ -50,7 +50,7 @@ public class ProvesJDBC {
                 System.out.println(titol);
             }
             System.out.println();
-            
+
             // Exercici 9.1
             System.out.println("Nacionalitats:");
             ArrayList<Nacionalitat> nacionalitats = bbdd.getNacionalitats();
@@ -58,25 +58,31 @@ public class ProvesJDBC {
                 System.out.println(nacionalitat.getNom());
             }
             System.out.println();
-            
+
             // Exercici 9.2
             System.out.println("Torna autor segons id:");
             System.out.println(bbdd.getAutor(1));
-            
+            System.out.println();
+
             //Exercici 9.3
             System.out.println("Autors segons nacionalitat:");
             ArrayList<Autor> autors = bbdd.getAutors(new Nacionalitat("Anglesa"));
             for (Autor autor : autors) {
                 System.out.println(autor);
             }
-            
+            System.out.println();
+
+            // Exercici 10
+            System.out.println("Esborra nacionalitat i insereix nacionalitat:");
             ArrayList<Autor> autors2 = new ArrayList<Autor>();
-            autors2.add(new Autor(9000, "Joselito", "hola"));
-            autors2.add(new Autor(9001, "Manolo", "hola"));
+            autors2.add(new Autor(9000, "Joselito Garcia", "hola"));
+            autors2.add(new Autor(9001, "Manolo Conga", "hola"));
+            bbdd.esborraNacionalitat(new Nacionalitat("spaad"));
             bbdd.insereixNacionalitatAutors(new Nacionalitat("spaad"), autors2);
-            System.out.println(bbdd.getAutor(9000));
-            System.out.println(bbdd.getAutor(9001));
-            
+            System.out.println(bbdd.getAutor(6550));
+            System.out.println(bbdd.getAutor(6551));
+            bbdd.esborraNacionalitat(new Nacionalitat("spaad"));
+
         } catch (JDBCException ex) {
             Logger.getLogger(ProvesJDBC.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
