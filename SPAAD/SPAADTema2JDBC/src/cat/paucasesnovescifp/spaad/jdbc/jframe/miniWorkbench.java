@@ -133,26 +133,21 @@ public class miniWorkbench extends javax.swing.JFrame {
             } else if (sql.contains("NACIONALITATS")) {
                 rs = ps.executeQuery(sql);
                 while (rs.next()) {
-                    cadena += rs.getString("LLENGUA") + "\n";
+                    cadena += rs.getString("NACIONALITAT").toString() + "\n";
                 }
             }
+            jLabel3.setText("Columnes: " + rs.getMetaData().getColumnCount());
+        } catch (SQLException ex) {
+            Logger.getLogger(miniWorkbench.class.getName()).log(Level.SEVERE, null, ex);
         }
-        jLabel3.setText("Columnes: " + rs.getMetaData().getColumnCount());
         result.setText(cadena);
         //result.setText(rs.getMetadata().getColumnCount());
-    }
-    catch (SQLException ex
-
-    
-        ) {
-            Logger.getLogger(miniWorkbench.class.getName()).log(Level.SEVERE, null, ex);
-    }
     }//GEN-LAST:event_selectActionPerformed
 
-/**
- * @param args the command line arguments
- */
-public static void main(String args[]) {
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -166,49 +161,17 @@ public static void main(String args[]) {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(miniWorkbench
-
-
-
-
-
-.class  
-
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(miniWorkbench.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(miniWorkbench
-
-
-
-
-
-.class  
-
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(miniWorkbench.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(miniWorkbench
-
-
-
-
-
-.class  
-
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(miniWorkbench.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(miniWorkbench
-
-
-
-
-
-.class  
-
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(miniWorkbench.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
