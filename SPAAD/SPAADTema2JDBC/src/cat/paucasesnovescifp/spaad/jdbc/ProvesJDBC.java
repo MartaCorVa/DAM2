@@ -3,6 +3,7 @@ package cat.paucasesnovescifp.spaad.jdbc;
 import cat.paucasesnovescifp.spaad.jdbc.auxiliars.JDBCException;
 import cat.paucasesnovescifp.spaad.jdbc.baseDades.BaseDades;
 import cat.paucasesnovescifp.spaad.jdbc.dades.Autor;
+import cat.paucasesnovescifp.spaad.jdbc.dades.Llengua;
 import cat.paucasesnovescifp.spaad.jdbc.dades.Nacionalitat;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -82,6 +83,13 @@ public class ProvesJDBC {
             System.out.println(bbdd.getAutor(6550));
             System.out.println(bbdd.getAutor(6551));
             bbdd.esborraNacionalitat(new Nacionalitat("spaad"));
+            
+            // Exercici 14
+            //System.out.println("Errada a insereixNacionalitatAutorsTransaccio():");
+            //bbdd.insereixNacionalitatAutorsTransaccio(new Nacionalitat("ESLOVACA"), autors);
+            
+            // Exercici 15
+            bbdd.corregirLlengua(new Llengua("hula"), new Llengua("Catala"));
 
         } catch (JDBCException ex) {
             Logger.getLogger(ProvesJDBC.class.getName()).log(Level.SEVERE, null, ex);

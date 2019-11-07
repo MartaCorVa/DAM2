@@ -16,7 +16,7 @@ public class Autor {
         if (nom_aut == null && ("").equals(nom_aut.trim())) {
             throw new JDBCException("Error: nom null o buit.");
         }
-        if(id_aut == null && ("").equals(id_aut)) {
+        if(id_aut == null) {
             throw new JDBCException("Error: id null o buit.");
         }
         if(("").equals(fk_nacionalitat)) {

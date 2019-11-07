@@ -2,6 +2,8 @@ package cat.paucasesnovescifp.spaad.jdbc.baseDades;
 
 import cat.paucasesnovescifp.spaad.jdbc.auxiliars.JDBCException;
 import cat.paucasesnovescifp.spaad.jdbc.dades.Autor;
+import cat.paucasesnovescifp.spaad.jdbc.dades.Llengua;
+import cat.paucasesnovescifp.spaad.jdbc.dades.Llibre;
 import cat.paucasesnovescifp.spaad.jdbc.dades.Nacionalitat;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -173,6 +175,38 @@ public class BaseDades {
                     ps2.setString(2, nacionalitat.getNom());
                     ps2.execute();
                 }
+                con.commit();
+            } catch (SQLException ex) {
+                Logger.getLogger(BaseDades.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("Roll back");
+                try {
+                    if (con != null) {
+                        con.rollback();
+                    }
+                } catch (SQLException se2) {
+                    se2.printStackTrace();
+                }
+            }
+        }
+    }
+
+    // Exercici 15
+    public void corregirLlengua(Llengua llenguaError, Llengua llenguaCorrecta) throws SQLException, JDBCException {
+        try (Connection con = DriverManager.getConnection(url, propietats)) {
+            try (PreparedStatement ps = con.prepareStatement("insert ignore into LLENGUES (LLENGUA) values (?)");
+                    PreparedStatement ps2 = con.prepareStatement("update LLIBRES set FK_LLENGUA = ? where FK_LLENGUA = ?");
+                    PreparedStatement ps3 = con.prepareStatement("delete from LLENGUES where LLENGUA = ?");) {
+                con.setAutoCommit(false);
+                ps.setString(1, llenguaCorrecta.getNom());
+                ps.execute();
+                
+                ps2.setString(1, llenguaCorrecta.getNom());
+                ps2.setString(2, llenguaError.getNom());
+                ps2.executeUpdate();
+                
+                ps3.setString(1, llenguaError.getNom());
+                ps3.execute();
+                
                 con.commit();
             } catch (SQLException ex) {
                 Logger.getLogger(BaseDades.class.getName()).log(Level.SEVERE, null, ex);
