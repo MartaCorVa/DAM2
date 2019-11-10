@@ -36,6 +36,7 @@ public class FibonacciThread extends Thread{
                 fibo01 = fibo02 - fibo01;
             }
         }
+        System.out.println("hola");
     }
     
 }

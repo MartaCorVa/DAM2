@@ -15,7 +15,7 @@ public class FibonacciRunnable implements Runnable{
     // que nos hayan introducido en el main.
     public FibonacciRunnable(int num) {
         // Inicializamos el hilo.
-        hilo = new FibonacciThread(num);
+        hilo = new FibonacciThread(num);        
         // Ejecutamos el hilo.
         hilo.start();
     }
