@@ -30,7 +30,7 @@ public class Pare {
 
             //Iniciamos el proceso
             p = Runtime.getRuntime().exec("C:\\Program Files\\Java\\jdk-11.0.3/bin/java -cp C:\\Users\\marta\\OneDrive\\Documentos\\Proyectos\\SPPSP\\SPPSPOpcional\\dist\\SPPSPOpcional.jar cat.paucasesnovescifp.sppsp.opcional.Hijo1");
-
+            
             // Obtener datos de la clase Hijo1
             InputStream is = p.getInputStream();
             InputStreamReader isr = new InputStreamReader(is);

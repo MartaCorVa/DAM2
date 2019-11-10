@@ -5,7 +5,10 @@
  */
 package cat.paucasesnovescifp.spaad.jdbc.jframe;
 
+import cat.paucasesnovescifp.spaad.jdbc.auxiliars.JDBCException;
+import cat.paucasesnovescifp.spaad.jdbc.dades.Nacionalitat;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -123,6 +126,7 @@ public class miniWorkbench extends javax.swing.JFrame {
         String cadena = "";
         String sql = query.getText();
         ResultSet rs = null;
+        ArrayList<Nacionalitat> nacionalitats = new ArrayList<Nacionalitat>();
 
         try (Statement ps = con.createStatement()) {
             if (sql.contains("LLENGUES")) {
@@ -130,14 +134,19 @@ public class miniWorkbench extends javax.swing.JFrame {
                 while (rs.next()) {
                     cadena += rs.getString("LLENGUA") + "\n";
                 }
-            } else if (sql.contains("NACIONALITATS")) {
+            } else if (sql.contains("NACIONALITATS")) {                
                 rs = ps.executeQuery(sql);
                 while (rs.next()) {
-                    cadena += rs.getString("NACIONALITAT").toString() + "\n";
+                    nacionalitats.add(new Nacionalitat(rs.getString("nacionalitat")));
                 }
+            }
+            for (Nacionalitat nacionalitat : nacionalitats) {
+                cadena += nacionalitat.getNom() + "\n";
             }
             jLabel3.setText("Columnes: " + rs.getMetaData().getColumnCount());
         } catch (SQLException ex) {
+            Logger.getLogger(miniWorkbench.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (JDBCException ex) {
             Logger.getLogger(miniWorkbench.class.getName()).log(Level.SEVERE, null, ex);
         }
         result.setText(cadena);

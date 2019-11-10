@@ -785,3 +785,5 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
+/SPPSP/SPPSPPrioridadEjemplo/nbproject/private/
+/SPPSP/SPPSPExamenTema01/nbproject/private/
