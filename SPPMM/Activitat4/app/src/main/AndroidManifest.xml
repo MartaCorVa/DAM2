@@ -19,6 +19,12 @@
         <activity android:name=".ResultatActivity">
 
         </activity>
+        <activity android:name=".TerceraActivity">
+
+        </activity>
+        <activity android:name=".QuartaActivity">
+
+        </activity>
     </application>
 
 </manifest>

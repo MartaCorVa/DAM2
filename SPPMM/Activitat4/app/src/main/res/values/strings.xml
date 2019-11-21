@@ -2,4 +2,11 @@
     <string name="app_name">Activitat4</string>
     <string name="hello">Hello</string>
     <string name="botocrida">Enviar</string>
+    <string name="compartir">Compartir</string>
+    <string name="tercera">Tercera Activity</string>
+    <string name="primerBoton">Boton 1</string>
+    <string name="segundoBoton">Boton 2</string>
+    <string name="tercerBoton">Boton 3</string>
+    <string name="cuartoBoton">Boton 4</string>
+    <string name="quarta">Quarta Activity</string>
 </resources>

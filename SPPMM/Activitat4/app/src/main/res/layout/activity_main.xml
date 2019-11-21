@@ -22,4 +22,34 @@
         android:text="@string/botocrida"
         />
 
+    <Button
+        android:id="@+id/botoCompartir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/startIntent"
+        android:layout_centerHorizontal="true"
+        android:onClick="compartir"
+        android:text="@string/compartir"
+        />
+
+    <Button
+        android:id="@+id/botoTercera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/botoCompartir"
+        android:layout_centerHorizontal="true"
+        android:onClick="abrirTercera"
+        android:text="@string/tercera"
+        />
+
+    <Button
+        android:id="@+id/botonQuarta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/botoTercera"
+        android:layout_centerHorizontal="true"
+        android:onClick="abrirCuarta"
+        android:text="@string/quarta"
+        />
+
 </RelativeLayout>
