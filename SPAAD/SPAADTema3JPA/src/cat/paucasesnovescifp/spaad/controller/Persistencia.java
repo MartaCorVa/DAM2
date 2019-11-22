@@ -103,7 +103,7 @@ public class Persistencia {
     }
 
     // Exercici 4.6
-    public void creaPreferencia(String nif, String ordre) {
+    public void creaPreferencia(String nif, int ordre) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory(unitatPersistencia);
         EntityManager em = emf.createEntityManager();
 
@@ -111,7 +111,7 @@ public class Persistencia {
 
         Preferencia preferencia = new Preferencia();
         preferencia.setNif(nif);
-        preferencia.setOrdre(Integer.parseInt(ordre));
+        preferencia.setOrdre(ordre);
         em.persist(preferencia);
 
         em.getTransaction().commit();

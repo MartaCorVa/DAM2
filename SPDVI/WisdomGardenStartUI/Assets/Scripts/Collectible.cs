@@ -8,6 +8,7 @@ public class Collectible : MonoBehaviour
 {
     private GameObject gameManagerObject;
     private GameManager gameManager;
+    private int count = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -29,9 +30,14 @@ public class Collectible : MonoBehaviour
     {
        if (other.gameObject.name == "FPSController")
         {
+            gameObject.transform.localScale /= 2.0f;
+            count++;
+            if (count == 3)
+            {
             gameManager.AddToScore(1);
-            Debug.Log("Score: " + gameManager.GetScore());
             Destroy(gameObject);
+            }
+            
         }
     }
 }

@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     public void AddToScore(int score)
     {
         _score += score;
-        scoreText.text += " " + _score;
+        scoreText.text = "Score: " + _score;
     }
 
     // Start is called before the first frame update

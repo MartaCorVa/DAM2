@@ -45,7 +45,7 @@ public class Main {
             System.out.println(persistencia.getAspirant("454345P"));
 
             // Exercici 4.6
-            persistencia.creaPreferencia("45434543X", "20");
+            persistencia.creaPreferencia("45434543X", 20);
 
             // Exercici 4.7
             Illa illa = new Illa();

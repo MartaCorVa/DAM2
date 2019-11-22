@@ -10,15 +10,15 @@ public class BulletHitsCrate : MonoBehaviour
     private int contador = 0;
     [SerializeField]
     private Text numberLive;
-    private int live = 125;
+    private int live = 100;
     [SerializeField]
     private Image liveBar;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Projectile(Clone)" )
         {
-            live -= 25;
-            numberLive.text = live + "/125";
+            live -= 20;
+            numberLive.text = live + "/100";
             liveBar.rectTransform.localScale = new Vector2(liveBar.rectTransform.localScale.x - 0.2f, liveBar.rectTransform.localScale.y);
             contador++;
             if (contador == 5)
@@ -34,7 +34,7 @@ public class BulletHitsCrate : MonoBehaviour
     {
         gameManagerObject = GameObject.Find("Game Manager");
         gameManager = gameManagerObject.GetComponent<GameManager>();
-        numberLive.text = "125/125";
+        numberLive.text = "100/100";
     }
 
     // Update is called once per frame
