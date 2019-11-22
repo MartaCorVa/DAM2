@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Activitat5</string>
+    <string name="obrirWeb">Obrir Web</string>
+    <string name="mapa">Obrir Mapa</string>
+    <string name="contactes">Obrir Contactes</string>
+    <string name="crida">Cridar</string>
+</resources>
