@@ -4,12 +4,15 @@ import java.applet.Applet;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author marta
  */
 public class Executa extends Applet implements ActionListener {
+
     private Font font;
     public static long comptador1 = 0;
     public static long comptador2 = 0;
@@ -40,7 +43,63 @@ public class Executa extends Applet implements ActionListener {
     //Aquest mètode permet executar totes les accions pertinents quan s'ha polsat algun botó
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Hilo1 hilo1 = new Hilo1();
+        Hilo2 hilo2 = new Hilo2();
+
+        if (!hilo1.isInterrupted() && e.getSource() == b1) {
+            hilo1.start();
+        }
+
+        if (hilo1.isInterrupted() && e.getSource() == b1) {
+            try {
+                hilo1.wait();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Executa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        if (!hilo2.isInterrupted() && e.getSource() == b2) {
+            hilo2.start();
+        }
+
+        if (hilo2.isInterrupted() && e.getSource() == b2) {
+            try {
+                hilo2.wait();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Executa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    // Clase Hilo
+    public class Hilo1 extends Thread {
+
+        @Override
+        public void run() {
+            try {
+                sleep(1000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Executa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            comptador1++;
+            repaint();
+        }
+
+    }
+
+    public class Hilo2 extends Thread {
+
+        @Override
+        public void run() {
+            try {
+                sleep(1000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Executa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            comptador2++;
+            repaint();
+        }
+
     }
 
 }

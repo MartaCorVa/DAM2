@@ -11,6 +11,15 @@ public class SensorDetect : MonoBehaviour
     private Image liveBar;
     [SerializeField]
     private Text numberLive;
+    [SerializeField]
+    private Text label;
+    [SerializeField]
+    private Image background;
+    [SerializeField]
+    private InputField input;
+    [SerializeField]
+    private Button button;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +27,10 @@ public class SensorDetect : MonoBehaviour
         gameManager = gameManagerObject.GetComponent<GameManager>();
         liveBar.enabled = false;
         numberLive.enabled = false;
+        label.enabled = false;
+        background.enabled = false;
+        input.enabled = false;
+        button.enabled = false;
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -27,6 +40,10 @@ public class SensorDetect : MonoBehaviour
             liveBar.enabled = true;
             // Add the number with live
             numberLive.enabled = true;
+            label.enabled = true;
+            background.enabled = true;
+            input.enabled = true;
+            button.enabled = true;
         }         
     }
 
@@ -36,6 +53,10 @@ public class SensorDetect : MonoBehaviour
         {
             liveBar.enabled = false;
             numberLive.enabled = false;
+            label.enabled = false;
+            background.enabled = false;
+            input.enabled = false;
+            button.enabled = false;
         }
     }
 

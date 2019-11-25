@@ -17,7 +17,14 @@ public class Collectible : MonoBehaviour
         gameManager = gameManagerObject.GetComponent<GameManager>();
 
         DataAccess dataAccess = new DataAccess();
-        gameObject.GetComponentInChildren<Text>().text = dataAccess.GetRandomBook().Title;
+        if (gameObject.name.Contains("Book"))
+        {
+            gameObject.GetComponentInChildren<Text>().text = dataAccess.GetRandomBook().Title;
+        }
+        if (gameObject.name.Contains("Author"))
+        {
+            gameObject.GetComponentInChildren<Text>().text = dataAccess.GetRandomAuthor().Nom;
+        }
     }
 
     // Update is called once per frame
@@ -30,7 +37,10 @@ public class Collectible : MonoBehaviour
     {
        if (other.gameObject.name == "FPSController")
         {
-            gameObject.transform.localScale /= 2.0f;
+            if(other.gameObject.name.Contains("Book"))
+            {
+                gameObject.transform.localScale /= 2.0f;
+            }            
             count++;
             if (count == 3)
             {

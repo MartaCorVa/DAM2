@@ -21,5 +21,13 @@ namespace MySqlDataAccessLibrary
             Book book = con.Query<Book>(sql).FirstOrDefault();
             return book;
         }
+
+        public Author GetRandomAuthor()
+        {
+            MySqlConnection con = new MySqlConnection(connectionString);
+            string sql = "select nom_aut as Nom from autors order by rand() limit 1";
+            Author author = con.Query<Author>(sql).FirstOrDefault();
+            return author;
+        }
     }
 }
