@@ -19,7 +19,6 @@ namespace MySqlDataAccessChallenge
             MySqlConnection con = new MySqlConnection(connectionString);
             string sql = "select name as Name from category";
             categories = con.Query<Category>(sql).ToList();
-            con.Close();
             return categories;            
         }
 
@@ -32,7 +31,6 @@ namespace MySqlDataAccessChallenge
                 "fc.category_id = c.category_id and " +
                 "c.name = '" + category + "'";
             films = con.Query<Film>(sql).ToList();
-            con.Close();
             return films;
         }
 
