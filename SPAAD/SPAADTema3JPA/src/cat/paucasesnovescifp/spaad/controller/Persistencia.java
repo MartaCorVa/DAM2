@@ -1,13 +1,13 @@
 package cat.paucasesnovescifp.spaad.controller;
 
 import cat.paucasesnovescifp.spaad.auxiliars.JPAException;
-import cat.paucasesnovescifp.spaad.model.Aspirant;
-import cat.paucasesnovescifp.spaad.model.Localitat;
-import cat.paucasesnovescifp.spaad.model.Preferencia;
+import cat.paucasesnovescifp.spaad.model.*;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.*;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 public class Persistencia {
 
@@ -103,7 +103,7 @@ public class Persistencia {
     }
 
     // Exercici 4.6
-    public void creaPreferencia(String nif, int ordre) {
+      public Preferencia creaPreferencia(String nif, int ordre, String centre, String idCos, String idEspecialitat){
         EntityManagerFactory emf = Persistence.createEntityManagerFactory(unitatPersistencia);
         EntityManager em = emf.createEntityManager();
 
@@ -112,12 +112,20 @@ public class Persistencia {
         Preferencia preferencia = new Preferencia();
         preferencia.setNif(nif);
         preferencia.setOrdre(ordre);
-        em.persist(preferencia);
+        preferencia.setAspirant(em.find(Aspirant.class, nif));
+        preferencia.setCentre(em.find(Centre.class, centre));
+        EspecialitatPK especialitatPK = new EspecialitatPK();
+        especialitatPK.setIdCos(idCos);
+        especialitatPK.setIdEspecialitat(idEspecialitat);
+        preferencia.setEspecialitat(em.find(Especialitat.class, especialitatPK));
 
+        em.persist(preferencia);
         em.getTransaction().commit();
 
         em.close();
         emf.close();
+
+        return preferencia;
     }
 
     // Exercici 4.7
@@ -157,11 +165,81 @@ public class Persistencia {
 
         em.getTransaction().begin();
 
-        em.remove(objecte);
+        em.remove(em.merge(objecte));
 
         em.getTransaction().commit();
 
         em.close();
         emf.close();
     }
+
+    // Exercici 5.1
+    public List<Illa> tornaIlles(){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(unitatPersistencia);
+        EntityManager em = emf.createEntityManager();
+
+        TypedQuery<Illa> query = em.createQuery("select i from Illa i", Illa.class);
+        List<Illa> illes = query.getResultList();
+        return illes;
+    }
+
+    // Exercici 5.2
+    public List<Illa> tornaIllesNQ(){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(unitatPersistencia);
+        EntityManager em = emf.createEntityManager();
+
+        Query query = em.createNamedQuery("Illa.findAll");
+        List<Illa> illes = query.getResultList();
+        return illes;
+    }
+
+    // Aconseguir una illa
+    public Illa getIlla(String id) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(unitatPersistencia);
+        EntityManager em = emf.createEntityManager();
+
+        Illa illa = em.find(Illa.class, id);
+
+
+        em.close();
+        emf.close();
+
+        return illa;
+    }
+
+    // Exercici 5.3
+    public List<Localitat> tornaLocalitatsIlla(Illa illa){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(unitatPersistencia);
+        EntityManager em = emf.createEntityManager();
+
+        TypedQuery<Localitat> query = em.createQuery("select l from Localitat l where l.illa.idIlla =:illa", Localitat.class);
+        query.setParameter("illa", illa.getIdIlla());
+        List<Localitat> localitats = query.getResultList();
+        return localitats;
+    }
+
+    // Exercici 5.4
+    public Object tornaLocalitatsIllaNC(Illa illa){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(unitatPersistencia);
+        EntityManager em = emf.createEntityManager();
+
+        illa = em.merge(illa);
+        Collection<Localitat> localitats = illa.getLocalitats();
+
+        return localitats;
+        }
+
+    public List<Localitat> tornaLocalitatsNQ(){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(unitatPersistencia);
+        EntityManager em = emf.createEntityManager();
+
+        Query query = em.createNamedQuery("Illa.findAll");
+        List<Illa> illes = query.getResultList();
+
+        em.close();
+        emf.close();
+
+        return illes;
+    }
+
 }
