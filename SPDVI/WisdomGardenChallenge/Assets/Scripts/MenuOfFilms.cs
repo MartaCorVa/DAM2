@@ -1,60 +1,92 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using MySqlDataAccessChallenge;
-using UnityStandardAssets;
-using UnityStandardAssets.Characters.FirstPerson;
 using UnityEngine.UIElements;
 using Button = UnityEngine.UI.Button;
+using Toggle = UnityEngine.UI.Toggle;
+using Image = UnityEngine.UI.Image;
 
 public class MenuOfFilms : MonoBehaviour
 {
-    public GameObject content;
+    // Access to our dll
     private DataAccess dataAccess = new DataAccess();
-    private Dropdown select;
-    List<string> listCategories = new List<string>();
-    List<Film> listFilms = new List<Film>();
+    // Acces to the content of our ScrollView
     [SerializeField]
-    private Button b;
-
-    void DropdownValueChanged(Dropdown change)
-    {
-        foreach (Film f in dataAccess.GetFilm(listCategories[change.value]))
-        {
-            var copy = Instantiate(b, Vector3.zero, Quaternion.identity) as Button;
-            copy.transform.SetParent(content.transform);
-            copy.transform.localPosition = Vector3.zero;
-            copy.GetComponentInChildren<Text>().text = f.Title;
-        }
-
-    }
+    private GameObject content;
+    // For use our dropdown
+    [SerializeField]
+    private Dropdown select;
+    // A list for save the categories
+    List<string> listCategories = new List<string>();
+    // A list of Films for the results of our dll
+    List<Film> listFilms = new List<Film>();
+    // A button for instanciate into the content of our ScrollView
+    [SerializeField]
+    private Button button;
+    // Our toggle for check the rating of the films
+    [SerializeField]
+    private Toggle check;
+    //private int i = 0;
+    //private ScrollView scroll;
+    //private Image view;
 
     void Start()
     {
-        select = GetComponent<Dropdown>();
-        //Add listener for when the value of the Dropdown changes, to take action
-        select.onValueChanged.AddListener(delegate {
-            DropdownValueChanged(select);
-        });
+        //view = content.transform.GetComponentInParent<Image>();
+        //scroll = view.GetComponentInParent<ScrollView>();
+        // Clear the dropdown
         select.options.Clear();
+        // Obtain the categories and put it into a list
         foreach (Category c in dataAccess.GetCategory()){
             listCategories.Add(c.Name);
         }
+        // Add the content of the list into the dropdown
         select.AddOptions(listCategories);
         // this swith from 1 to 0 is only to refresh the visual DdMenu
-        //select.value = 1;
-        //select.value = 0;
+        select.value = 1;
+        select.value = 0;
+        // Inicialize some films per defect
+        listFilms = dataAccess.GetFilm("action");
     }
 
-    private void Update()
+    public void GetFilms()
     {
+        //scroll.Clear();
+        //Debug.Log(content.transform.childCount);
+        //GameObject[] array = new GameObject[content.transform.childCount];
+        //foreach (Transform child in transform)
+        //{
+        //    array[i] = child.gameObject;
+        //    i++;
+        //}
+        //foreach (GameObject child in array)
+        //{
+        //    Destroy(child.gameObject, 5);
+        //}
+        //DestroyImmediate(content.transform.GetComponentInChildren<Button>());
 
+        // Check if the Toggle is checked
+        if (check.isOn)
+        {
+            // Add to the list the films Under 18
+            listFilms = dataAccess.GetFilm(select.captionText.text);           
+        } else
+        {
+            // Add to the list the films +18
+            listFilms = dataAccess.GetFilmRate(select.captionText.text);
+        }
+        // Use a foreach for create every Button that contain the title of the films
+        foreach (Film f in listFilms)
+        {
+            // Instantiate a Button and put it into the variable copy
+            var copy = Instantiate(button, Vector3.zero, Quaternion.identity) as Button;
+            // Make that the Content of our Dropdown has been the parent of our new button
+            copy.transform.SetParent(content.transform);
+            // Put our button on the position (0,0,0)
+            copy.transform.localPosition = Vector3.zero;
+            // Add the title at the text of the button
+            copy.GetComponentInChildren<Text>().text = f.Title;
+        }
     }
-
-    public void dropDownClick()
-    {
-        
-    }
-
 }
