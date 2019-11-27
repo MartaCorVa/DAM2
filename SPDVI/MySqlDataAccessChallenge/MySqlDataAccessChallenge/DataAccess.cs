@@ -26,11 +26,11 @@ namespace MySqlDataAccessChallenge
         {
             List<Film> films = new List<Film>();
             MySqlConnection con = new MySqlConnection(connectionString);
-            string sql = "select distinct title as Title from film f, film_category fc, category c where " +
+            string sql = "select distinct f.title as Title from film f, film_category fc, category c where " +
                 "f.film_id = fc.film_id and " +
                 "fc.category_id = c.category_id and " +
                 "c.name = '" + category + "' and " +
-                "f.rating != 'NC-17' or " +
+                "f.rating != 'NC-17' and " +
                 "f.rating != 'R'";
             films = con.Query<Film>(sql).ToList();
             return films;
@@ -40,12 +40,10 @@ namespace MySqlDataAccessChallenge
         {
             List<Film> films = new List<Film>();
             MySqlConnection con = new MySqlConnection(connectionString);
-            string sql = "select distinct title as Title from film f, film_category fc, category c where " +
+            string sql = "select distinct f.title as Title from film f, film_category fc, category c where " +
                 "f.film_id = fc.film_id and " +
                 "fc.category_id = c.category_id and " +
-                "c.name = '" + category + "' and " +
-                "f.rating = 'NC-17' or " +
-                "f.rating = 'R'";
+                "c.name = '" + category + "'";
             films = con.Query<Film>(sql).ToList();
             return films;
         }

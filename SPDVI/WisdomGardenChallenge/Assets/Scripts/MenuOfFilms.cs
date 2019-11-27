@@ -27,14 +27,9 @@ public class MenuOfFilms : MonoBehaviour
     // Our toggle for check the rating of the films
     [SerializeField]
     private Toggle check;
-    //private int i = 0;
-    //private ScrollView scroll;
-    //private Image view;
 
     void Start()
     {
-        //view = content.transform.GetComponentInParent<Image>();
-        //scroll = view.GetComponentInParent<ScrollView>();
         // Clear the dropdown
         select.options.Clear();
         // Obtain the categories and put it into a list
@@ -46,25 +41,20 @@ public class MenuOfFilms : MonoBehaviour
         // this swith from 1 to 0 is only to refresh the visual DdMenu
         select.value = 1;
         select.value = 0;
-        // Inicialize some films per defect
-        listFilms = dataAccess.GetFilm("action");
     }
 
     public void GetFilms()
     {
-        //scroll.Clear();
-        //Debug.Log(content.transform.childCount);
-        //GameObject[] array = new GameObject[content.transform.childCount];
-        //foreach (Transform child in transform)
-        //{
-        //    array[i] = child.gameObject;
-        //    i++;
-        //}
-        //foreach (GameObject child in array)
-        //{
-        //    Destroy(child.gameObject, 5);
-        //}
-        //DestroyImmediate(content.transform.GetComponentInChildren<Button>());
+        if (content.transform.childCount != 0)
+        {
+            foreach (Button b in content.GetComponent<Transform>().GetComponentsInChildren<Button>())
+            {
+                Debug.Log(b);
+                Destroy(b.gameObject);
+                // content.GetComponent<Transform>().GetComponentsInChildren<Button>();
+                // content.transform.GetComponentsInChildren<Button>()
+            }
+        }
 
         // Check if the Toggle is checked
         if (check.isOn)
@@ -78,15 +68,18 @@ public class MenuOfFilms : MonoBehaviour
         }
         // Use a foreach for create every Button that contain the title of the films
         foreach (Film f in listFilms)
-        {
+        {            
             // Instantiate a Button and put it into the variable copy
             var copy = Instantiate(button, Vector3.zero, Quaternion.identity) as Button;
             // Make that the Content of our Dropdown has been the parent of our new button
             copy.transform.SetParent(content.transform);
             // Put our button on the position (0,0,0)
-            copy.transform.localPosition = Vector3.zero;
+            copy.transform.localPosition = Vector3.left;
+            // Change the size
+            copy.GetComponent<RectTransform>().sizeDelta = new Vector2(250, 30);
             // Add the title at the text of the button
             copy.GetComponentInChildren<Text>().text = f.Title;
+
         }
     }
 }
