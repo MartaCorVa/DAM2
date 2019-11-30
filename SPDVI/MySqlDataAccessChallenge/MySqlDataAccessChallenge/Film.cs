@@ -9,5 +9,6 @@ namespace MySqlDataAccessChallenge
     public class Film
     {
         public string Title { get; set; }
+        public int Total { get; set; }
     }
 }

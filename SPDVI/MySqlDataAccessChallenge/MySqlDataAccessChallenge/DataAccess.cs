@@ -22,28 +22,34 @@ namespace MySqlDataAccessChallenge
             return categories;            
         }
 
-        public List<Film> GetFilm(string category)
+        public List<Film> GetFilm(string category, int limit)
         {
             List<Film> films = new List<Film>();
             MySqlConnection con = new MySqlConnection(connectionString);
-            string sql = "select distinct f.title as Title from film f, film_category fc, category c where " +
+            string sql = "select distinct f.title as Title, (SELECT COUNT(*) from film f, film_category fc, category c where " +
+                "f.film_id = fc.film_id and " +
+                "fc.category_id = c.category_id and " +
+                "c.name = 'action') as Total from film f, film_category fc, category c where " +
                 "f.film_id = fc.film_id and " +
                 "fc.category_id = c.category_id and " +
                 "c.name = '" + category + "' and " +
                 "f.rating != 'NC-17' and " +
-                "f.rating != 'R'";
+                "f.rating != 'R' limit " + limit + ", 20";
             films = con.Query<Film>(sql).ToList();
             return films;
         }
 
-        public List<Film> GetFilmRate(string category)
+        public List<Film> GetFilmRate(string category, int limit)
         {
             List<Film> films = new List<Film>();
             MySqlConnection con = new MySqlConnection(connectionString);
-            string sql = "select distinct f.title as Title from film f, film_category fc, category c where " +
+            string sql = "select distinct f.title as Title, (SELECT COUNT(*) from film f, film_category fc, category c where " +
+                "f.film_id = fc.film_id and " + 
+                "fc.category_id = c.category_id and " +
+                "c.name = 'action') as Total from film f, film_category fc, category c where " +
                 "f.film_id = fc.film_id and " +
                 "fc.category_id = c.category_id and " +
-                "c.name = '" + category + "'";
+                "c.name = '" + category + "' limit " + limit + ", 20";
             films = con.Query<Film>(sql).ToList();
             return films;
         }
