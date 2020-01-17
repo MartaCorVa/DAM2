@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textProducte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
+        android:text="@string/producte"
+        />
+
+    <EditText
+        android:id="@+id/nouProducte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/textProducte"
+        />
+
+    <TextView
+        android:id="@+id/textQuantitat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textProducte"
+        android:text="@string/quantitat"
+        />
+
+    <EditText
+        android:id="@+id/novaQuantitat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/textQuantitat"
+        android:layout_below="@id/nouProducte"
+        />
+
+    <Button
+        android:id="@+id/afegir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="afegirNouItem"
+        android:text="@string/afegeix"
+        />
+
+</RelativeLayout>

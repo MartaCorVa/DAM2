@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/afegir"
+        android:text="@string/afegir"
+        android:layout_alignParentTop="true"
+        android:onClick="botoAfegir">
+    </Button>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/consulta"
+        android:text="@string/consulta"
+        android:layout_below="@id/afegir"
+        android:onClick="botoConsulta">
+    </Button>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/llista"
+        android:text="@string/llista"
+        android:layout_below="@id/consulta"
+        android:onClick="botoLlista">
+    </Button>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/actualitza"
+        android:text="@string/actualitza"
+        android:layout_below="@id/llista"
+        android:onClick="botoActualitza">
+    </Button>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/esborra"
+        android:text="@string/consulta"
+        android:layout_below="@id/llista"
+        android:onClick="botoEsborra">
+    </Button>
+</RelativeLayout>

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Activitat 2</string>
+    <string name="afegir">Afegir</string>
+    <string name="consulta">Consulta</string>
+    <string name="llista">Llista</string>
+    <string name="actualitza">Actualitza</string>
+    <string name="esborra">Esborra</string>
+    <string name="nom">Nom: </string>
+    <string name="email">Email: </string>
+    <string name="id">ID: </string>
+</resources>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp"
+        android:id="@+id/textViewId"
+        android:text="@string/id"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/textViewId"
+        android:id="@+id/editTextId"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewId"
+        android:layout_marginTop="50dp"
+        android:id="@+id/textViewNom"
+        android:text="@string/nom"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/textViewNom"
+        android:layout_below="@id/editTextId"
+        android:layout_marginTop="20dp"
+        android:id="@+id/editTextNom"
+        />
+
+    <TextView
+        android:id="@+id/textViewEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewNom"
+        android:layout_marginTop="50dp"
+        android:text="@string/email" />
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/editTextNom"
+        android:layout_toEndOf="@id/textViewEmail" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/actualitza"
+        android:text="@string/actualitza"
+        android:layout_below="@id/editTextEmail"
+        android:layout_centerInParent="true"
+        android:onClick="actualitzarUsuari"
+        />
+</RelativeLayout>

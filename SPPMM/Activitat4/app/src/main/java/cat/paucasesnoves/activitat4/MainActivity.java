@@ -45,10 +45,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void compartir (View view) {
-        Intent compartit = new Intent(Intent.ACTION_SEND);
-        compartit.setType("text/plain");
-        compartit.putExtra(android.content.Intent.EXTRA_TEXT,"ES MEU TEXT");
-        startActivity(compartit);
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
+        sendIntent.setType("text/plain");
+
+        Intent shareIntent = Intent.createChooser(sendIntent, null);
+        startActivity(shareIntent);
     }
 
     public void abrirTercera(View view) {

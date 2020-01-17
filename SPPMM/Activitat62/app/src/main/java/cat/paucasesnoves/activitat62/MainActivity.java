@@ -20,12 +20,12 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-        ListView listView;
-        String pais;
-        Boolean checkPais;
+    ListView listView;
+    String pais;
+    Boolean checkPais;
 
     @Override
-        protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_layout);
         listView = (ListView) findViewById(R.id.listView);
@@ -50,9 +50,9 @@ public class MainActivity extends AppCompatActivity {
 
         Toast.makeText(getApplicationContext(), pais, Toast.LENGTH_SHORT).show();
         Intent b = new Intent(android.content.Intent.ACTION_VIEW,
-                   Uri.parse("geo:0,0?q=" + pais));
+                Uri.parse("geo:0,0?q=" + pais));
         b.setPackage("com.google.android.apps.maps");
         startActivity(b);
     }
 
-    }
+}
