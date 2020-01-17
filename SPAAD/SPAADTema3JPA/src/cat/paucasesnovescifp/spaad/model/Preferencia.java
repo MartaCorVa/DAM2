@@ -6,6 +6,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "Preferencies", schema = "interins")
 @IdClass(PreferenciaPK.class)
+@NamedQuery(name = "Preferencia.getPreferencies", query = "select p from Preferencia p order by p.centre.nomCentre")
 public class Preferencia {
     private String nif;
     private int ordre;

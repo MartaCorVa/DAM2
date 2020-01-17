@@ -229,17 +229,74 @@ public class Persistencia {
         return localitats;
         }
 
+    // Exercici 5.5
     public List<Localitat> tornaLocalitatsNQ(){
         EntityManagerFactory emf = Persistence.createEntityManagerFactory(unitatPersistencia);
         EntityManager em = emf.createEntityManager();
 
-        Query query = em.createNamedQuery("Illa.findAll");
-        List<Illa> illes = query.getResultList();
+        Query query = em.createNamedQuery("Localitat.findByIlla");
+        query.setParameter("illa", "074" );
+        List<Localitat> localitats = query.getResultList();
+
+        return localitats;
+    }
+
+    // Exercici 5.6
+    public List<Aspirant> tornaAspirants(int inici, int quantitat) {
+        List<Aspirant> aspirants = null;
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(unitatPersistencia);
+        EntityManager em = emf.createEntityManager();
+
+            TypedQuery<Aspirant> query = em.createNamedQuery("Aspirant.findAll", Aspirant.class)
+                    .setFirstResult(inici)
+                    .setMaxResults(quantitat);
+            aspirants = query.getResultList();
+
+            em.close();
+            emf.close();
+
+        return aspirants;
+    }
+
+    // Exercici 5.7
+    public List<String> getNifs(int inici, int quantitat) {
+        List<String> nifs = null;
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(unitatPersistencia);
+        EntityManager em = emf.createEntityManager();
+
+        TypedQuery<String> query = em.createNamedQuery("Aspirant.findNif", String.class)
+                .setFirstResult(inici)
+                .setMaxResults(quantitat);
+        nifs = query.getResultList();
 
         em.close();
         emf.close();
 
-        return illes;
+        return nifs;
+    }
+
+    // Exercici 5.8
+    public List getNomComplet(int inici, int quantitat) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(unitatPersistencia);
+        EntityManager em = emf.createEntityManager();
+
+        Query query = em.createNamedQuery("Aspirant.getNomComplet")
+                .setFirstResult(inici)
+                .setMaxResults(quantitat);
+        List noms = query.getResultList();
+        return noms;
+    }
+
+    //Exercici 5.9
+    public List<Preferencia> getPreferencies(int inici, int quantitat) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(unitatPersistencia);
+        EntityManager em = emf.createEntityManager();
+
+        Query query = em.createNamedQuery("Preferencia.getPreferencies")
+                .setFirstResult(inici)
+                .setMaxResults(quantitat);
+        List<Preferencia> preferencies = query.getResultList();
+        return preferencies;
     }
 
 }

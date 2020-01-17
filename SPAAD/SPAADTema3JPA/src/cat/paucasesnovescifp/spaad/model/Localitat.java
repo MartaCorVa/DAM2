@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "Localitats", schema = "interins")
-@NamedQuery(name="Localitat.findAll", query = "select l from Localitat l where l.illa.idIlla =:illa")
+@NamedQuery(name="Localitat.findByIlla", query = "select l from Localitat l where l.illa.idIlla =:illa")
 public class Localitat {
     private String idLocalitat;
     private String nomLocalitat;

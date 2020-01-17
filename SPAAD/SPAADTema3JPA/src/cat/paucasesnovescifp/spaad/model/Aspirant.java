@@ -8,6 +8,9 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "Aspirants", schema = "interins")
+@NamedQueries({@NamedQuery(name = "Aspirant.findAll", query = "select a from Aspirant a"),
+        @NamedQuery(name = "Aspirant.findNif", query = "select a.nif from Aspirant a"),
+        @NamedQuery(name = "Aspirant.getNomComplet", query = "select a.nom, a.llinatges from Aspirant a")})
 public class Aspirant {
     private String nif;
     private String nom;
