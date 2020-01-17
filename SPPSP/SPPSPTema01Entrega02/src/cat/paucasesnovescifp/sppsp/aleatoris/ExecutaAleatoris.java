@@ -36,7 +36,7 @@ public class ExecutaAleatoris {
                         Runtime rt = Runtime.getRuntime();
                         // ejecución de Aleatoris.class a través de runtime
                         // se almacena el resultado en el proceso
-                        p = rt.exec("C:\\Program Files\\Java\\jdk-11.0.3/bin/java -cp C:\\Users\\marta\\OneDrive\\Documentos\\NetBeansProjects\\SPPSPTema01Entrega02\\dist\\SPPSPTema01Entrega02.jar cat.paucasesnovescifp.sppsp.aleatoris.Aleatoris");
+                        p = rt.exec("C:\\Program Files\\Java\\jdk-11.0.3/bin/java -cp C:\\Users\\marta\\OneDrive\\Documentos\\Proyectos\\SPPSP\\SPPSPTema01Entrega02\\dist\\SPPSPTema01Entrega02.jar cat.paucasesnovescifp.sppsp.aleatoris.Aleatoris");
                         inStream = new BufferedReader(new InputStreamReader(p.getInputStream()));
                         System.out.println(inStream.readLine());
                     } catch (IOException e) {

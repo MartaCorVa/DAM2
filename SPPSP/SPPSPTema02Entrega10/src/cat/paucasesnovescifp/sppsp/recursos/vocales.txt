@@ -1,0 +1,5 @@
+La vocal a 28
+La vocal i 32
+La vocal o 25
+La vocal u 17
+La vocal e 59

@@ -36,7 +36,7 @@ public class EjecutaProcessBuilder {
             // creación de un proceso
             Process p = null;
             // ProcessBuilder con la ruta de ejecución de Numeros.class y los parametros
-            ProcessBuilder pb = new ProcessBuilder("C:\\Program Files\\Java\\jdk-11.0.3/bin/java", "-cp", "C:\\Users\\marta\\OneDrive\\Documentos\\NetBeansProjects\\SPPSPtema01\\dist\\SPPSPtema01.jar", "cat.paucasesnovescifp.sppsp.programa.Numeros", parametros.get(0), parametros.get(1));
+            ProcessBuilder pb = new ProcessBuilder("C:\\Program Files\\Java\\jdk-11.0.3/bin/java", "-cp", "C:\\Users\\marta\\OneDrive\\Documentos\\Proyectos\\SPPSP\\SPPSPtema01\\dist\\SPPSPtema01.jar", "cat.paucasesnovescifp.sppsp.programa.Numeros", parametros.get(0), parametros.get(1));
             // redirectOutput para escribir el resultado en sortida.txt
             pb.redirectOutput(new File(url + "sortida.txt"));
             // redirectError para escribir los errores en error.txt

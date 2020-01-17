@@ -17,6 +17,8 @@ public class Executa extends Applet implements ActionListener {
     public static long comptador1 = 0;
     public static long comptador2 = 0;
     private Button b1, b2;
+    private boolean activa = false;
+    private boolean activa2 = false;
 
     //L'init es el primer que s'inicia i s'encarrega d'asignar una font, un color de fons, inicialitzar el botons i la finestra.
     @Override
@@ -46,29 +48,32 @@ public class Executa extends Applet implements ActionListener {
         Hilo1 hilo1 = new Hilo1();
         Hilo2 hilo2 = new Hilo2();
 
-        if (!hilo1.isInterrupted() && e.getSource() == b1) {
-            hilo1.start();
+        if (e.getSource() == b1) {
+            if (activa) {
+                b1.setLabel("Iniciar Fil 1");
+                activa = !activa;
+            } else {
+                b1.setLabel("Finalizar Fil 1");
+                if (comptador1 < 1) {
+                    hilo1.start();
+                }
+                activa = !activa;
+            }
         }
-
-        if (hilo1.isInterrupted() && e.getSource() == b1) {
-            try {
-                hilo1.wait();
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Executa.class.getName()).log(Level.SEVERE, null, ex);
+        
+        if (e.getSource() == b2) {
+            if (activa2) {
+                b2.setLabel("Iniciar Fil 2");
+                activa2 = !activa2;
+            } else {
+                b2.setLabel("Finalizar Fil 2");
+                if (comptador2 < 1) {
+                    hilo2.start();
+                }
+                activa2 = !activa2;
             }
         }
 
-        if (!hilo2.isInterrupted() && e.getSource() == b2) {
-            hilo2.start();
-        }
-
-        if (hilo2.isInterrupted() && e.getSource() == b2) {
-            try {
-                hilo2.wait();
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Executa.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
     }
 
     // Clase Hilo
@@ -76,30 +81,37 @@ public class Executa extends Applet implements ActionListener {
 
         @Override
         public void run() {
-            try {
-                sleep(1000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Executa.class.getName()).log(Level.SEVERE, null, ex);
+            while (true) {
+                if (activa) {
+                    comptador1++;
+                }
+                try {
+                    sleep(1000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Executa.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                repaint();
             }
-            comptador1++;
-            repaint();
         }
-
     }
 
     public class Hilo2 extends Thread {
 
         @Override
         public void run() {
-            try {
-                sleep(1000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Executa.class.getName()).log(Level.SEVERE, null, ex);
+            while (true) {
+                if (activa2) {
+                    comptador2++;
+                }
+                try {
+                    sleep(1000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Executa.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                repaint();
             }
-            comptador2++;
-            repaint();
-        }
 
+        }
     }
 
 }

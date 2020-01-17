@@ -19,7 +19,7 @@ public class EjecutaRuntime {
             Runtime rt = Runtime.getRuntime();
             // ejecución de Numeros.class a traves de runtime
             // se almacena el resultado en el proceso
-            p = rt.exec("C:\\Program Files\\Java\\jdk-11.0.3/bin/java -cp C:\\Users\\marta\\OneDrive\\Documentos\\NetBeansProjects\\SPPSPtema01\\dist\\SPPSPtema01.jar cat.paucasesnovescifp.sppsp.programa.Numeros 1 2");
+            p = rt.exec("C:\\Program Files\\Java\\jdk-11.0.3/bin/java -cp C:\\Users\\marta\\OneDrive\\Documentos\\Proyectos\\SPPSP\\SPPSPtema01\\dist\\SPPSPtema01.jar cat.paucasesnovescifp.sppsp.programa.Numeros 1 2");
             // variable rc que indica si el proceso se ha ejecutado correctamente
             // 1 = error, 0 = correcto
             int rc = p.waitFor();
