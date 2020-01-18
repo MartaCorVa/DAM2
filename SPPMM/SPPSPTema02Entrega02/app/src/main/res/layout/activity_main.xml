@@ -42,8 +42,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/esborra"
-        android:text="@string/consulta"
-        android:layout_below="@id/llista"
+        android:text="@string/esborra"
+        android:layout_below="@id/actualitza"
         android:onClick="botoEsborra">
     </Button>
 </RelativeLayout>

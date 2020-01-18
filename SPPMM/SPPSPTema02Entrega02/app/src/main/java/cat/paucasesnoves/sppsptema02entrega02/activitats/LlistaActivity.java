@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
@@ -18,11 +19,14 @@ public class LlistaActivity extends AppCompatActivity {
 
     private DBInterface bd;
     private ListAdapter adapter;
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_llista);
+
+        listView = findViewById(R.id.llista);
         llistaContactes();
     }
 
@@ -41,11 +45,10 @@ public class LlistaActivity extends AppCompatActivity {
             c.moveToNext();
         }
         bd.tanca();
-        adapter = new SimpleAdapter(this, llista,R.layout.activity_llista,
+        adapter = new SimpleAdapter(this, llista,R.layout.list_item,
                 new String[] { "id", "nom","email" }, new int[] {R.id.id,
                 R.id.nom, R.id.email});
-        setListAdapter(adapter);
-
+        listView.setAdapter(adapter);
     }
 
 }
