@@ -20,6 +20,9 @@ public class Control : MonoBehaviour
     public Button resetButton;
     public Image image;
 
+    // Download reference
+    UnityWebRequest httpClient;
+
     // Slider reference
     public Slider downloadingBar;
 
@@ -42,7 +45,7 @@ public class Control : MonoBehaviour
                 counter = 0f;
                 tenths++;
                 tenthsText.text = tenths.ToString();
-                if (Mathf.FloorToInt(tenths) >= 9)
+                if (tenths >= 9)
                 {
                     tenths = 0;
                     seconds++;
@@ -56,6 +59,8 @@ public class Control : MonoBehaviour
                 }
             }
         }
+        // Move Slider
+        downloadingBar.GetComponent<Slider>().value = httpClient.downloadProgress;
     }
 
     public void PlayPause()
@@ -99,9 +104,6 @@ public class Control : MonoBehaviour
             {
                 //Thread.Sleep(10);
                 Debug.Log(httpClient.downloadProgress * 100 + "% (Bytes downloaded: " + httpClient.downloadedBytes / 1024 + " KB");
-                // Move Slider
-                downloadingBar.value = httpClient.downloadProgress;
-                Debug.Log(downloadingBar.value);
             }
             Debug.Log("hpptClient.isDone = " + httpClient.isDone);
             if (httpClient.isNetworkError || httpClient.isHttpError)
