@@ -29,12 +29,11 @@ public class AfegirActivity extends AppCompatActivity {
         bd = new DBInterface(this);
         bd.obre();
         if (bd.insereixContacte(editNom.getText().toString(), editEmail.getText().toString()) != -1) {
-            Toast.makeText(this, "Afegit correctament", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Afegit correctament", Toast.LENGTH_LONG).show();
         } else {
-            Toast.makeText(this, "Error a l’afegir", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Error a l’afegir", Toast.LENGTH_LONG).show();
         }
         bd.tanca();
         finish();
     }
-
 }
