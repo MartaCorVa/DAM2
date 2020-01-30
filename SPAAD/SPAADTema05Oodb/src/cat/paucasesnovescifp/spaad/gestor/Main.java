@@ -1,12 +1,16 @@
 package cat.paucasesnovescifp.spaad.gestor;
 
 import cat.paucasesnovescifp.spaad.dades.*;
+import cat.paucasesnovescifp.spaad.utilitats.OODBException;
 import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import com.db4o.config.EmbeddedConfiguration;
 import com.db4o.query.Predicate;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -15,7 +19,7 @@ public class Main {
         String nomFitxer = "C:\\Users\\marta\\OneDrive\\Documentos\\Proyectos\\SPAAD\\SPAADTema05Oodb\\src\\cat\\paucasesnovescifp\\spaad\\fitxers\\bbdd.db";
 
         // Crea al paquet gestor una classe amb main que generi la base de dades.
-        /*ObjectContainer db = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), nomFitxer);*/
+        ObjectContainer db = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), nomFitxer);
 
         // Insereix a la base de dades anterior tres alumnes i tres assignatures.
          /*db.store(new Alumne("45434543X", "Joselito", "Garcia", "dam"));
@@ -150,19 +154,75 @@ public class Main {
         Alumne2 foundMin = result.next();
         System.out.println(foundMin);*/
 
-
-
         // Crea un curs, tres assignatures i dos alumnes que no estiguin matriculats exactament de les mateixes assignatures.
-
         // Guarda el curs i els alumnes a la base de dades.
+        /*try {
+            Curs curs = new Curs("mec", "Mecanica");
+            db.store(curs);
+            Assignatura2 cotxe = new Assignatura2("cx", "Cotxe", curs);
+            db.store(cotxe);
+            Assignatura2 moto = new Assignatura2("mt", "Moto", curs);
+            db.store(moto);
+            Assignatura2 vehicle = new Assignatura2("vh", "Vehicle", curs);
+            db.store(vehicle);
+            Alumne3 miguel = new Alumne3("89878987X", "Miguel","Rubio", curs);
+            miguel.afegirAssignatura(cotxe);
+            miguel.afegirAssignatura(moto);
+            db.store(miguel);
+            Alumne3 sara = new Alumne3("12321232X", "Sara", "Adeu", curs);
+            sara.afegirAssignatura(cotxe);
+            sara.afegirAssignatura(vehicle);
+            db.store(sara);
+        } catch (OODBException e) {
+            e.printStackTrace();
+        }*/
 
         // Crea una consulta per exemple que recuperi els alumnes matriculats d'una certa assignatura.
+        /*ArrayList<Assignatura2> assignatures = new ArrayList<>();
+        assignatures.add(new Assignatura2("cx", "Cotxe", new Curs("mec", "Mecanica")));
+        List<Alumne3> results = db.queryByExample(new Alumne3(null, null, null, null, assignatures));
+        for (Alumne3 a : results) {
+            System.out.println(a);
+        }*/
 
         // Crea una consulta nativa que recuperi els alumnes matriculats d'una certa assignatura.
+        /*ArrayList<Assignatura2> assignatures = new ArrayList<>();
+        assignatures.add(new Assignatura2("cx", "Cotxe", new Curs("mec", "Mecanica")));
+        ObjectSet<Alumne3> results = db.query(new Predicate<Alumne3>() {
+            public boolean match(Alumne3 alumne3) {
+               return alumne3.getAssignatures().contains(assignatures);
+            }
+        });
+        ArrayList<Alumne3> alumnes = new ArrayList<>(results);
+        for (Alumne3 a : alumnes) {
+            System.out.println(a);
+        }*/
 
+        // Crea una consulta que torni tots els objectes de classe Alumnes2.
+        /*ObjectSet<Alumne2> alumnes = db.query(new Predicate<Alumne2>() {
+            @Override
+            public boolean match(Alumne2 alumne) {
+                return true;
+            }
+        });
+        ArrayList<Alumne2> result = new ArrayList<>(alumnes);
+        for (Alumne2 a : result) {
+            System.out.println(a);
+        }*/
 
+        // Comprova que també et torna objectes de la classe Alumnes3.
+        ObjectSet<Alumne3> alumnes = db.query(new Predicate<Alumne3>() {
+            @Override
+            public boolean match(Alumne3 alumne3) {
+                return true;
+            }
+        });
+        ArrayList<Alumne3> result = new ArrayList<>(alumnes);
+        for (Alumne3 a : result) {
+            System.out.println(a);
+        }
 
         /*dbc.close();*/
-        /*db.close();*/
+        db.close();
     }
 }

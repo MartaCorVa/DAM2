@@ -28,7 +28,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_layout);
+
         listView = (ListView) findViewById(R.id.listView);
+
         //Països definits a strings.xml
         String[] paisos = getResources().getStringArray(R.array.paisos_array);
         //Crearem l'ArrayAdapter

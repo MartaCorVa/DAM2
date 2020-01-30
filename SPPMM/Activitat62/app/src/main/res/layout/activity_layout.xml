@@ -9,6 +9,5 @@
         android:layout_height="wrap_content"
         android:divider="#000"
         android:dividerHeight="2dp" />
-    />
 
 </RelativeLayout>
